@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
+#include "Abilities/GameplayAbility.h"
 #include "GameFramework/Character.h"
 #include "Interaction/CombatInterface.h"
 #include "AuraCharacterBase.generated.h"
@@ -48,5 +49,9 @@ protected:
 	void ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level = 1.f) const;
 	void InitializeDefaultAttributes() const;
 
-public:
+	void AddCharacterAbilities();
+	
+private:
+	UPROPERTY(EditAnywhere, Category="Attributes")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };
